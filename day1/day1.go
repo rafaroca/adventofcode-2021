@@ -1,21 +1,35 @@
 package day1
 
-func Part1(input []int) int {
+import "strconv"
+
+func convertToInt(input []string) []int {
+	result := make([]int, len(input))
+	for i, v := range input {
+		result[i], _ = strconv.Atoi(v)
+	}
+	return result
+}
+
+func Part1(input []string) int {
+	return Part1int(convertToInt(input))
+}
+
+func Part1int(input []int) int {
 	incCount := 0
 	lastElem := 100000
-	for _, v := range input {
-		if v > lastElem {
+	for _, elem := range input {
+		if elem > lastElem {
 			incCount++
 		}
-		lastElem = v
+		lastElem = elem
 	}
 	return incCount
 }
 
-func Part2(input []int) int {
-	slidingWindow := SlidingWindow(input)
-
-	return Part1(slidingWindow)
+func Part2(input []string) int {
+	elems := convertToInt(input)
+	slidingWindow := SlidingWindow(elems)
+	return Part1int(slidingWindow)
 }
 
 func SlidingWindow(input []int) []int {
