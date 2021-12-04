@@ -2,6 +2,9 @@ package day1
 
 import "strconv"
 
+type Day1 struct {
+}
+
 func convertToInt(input []string) []int {
 	result := make([]int, len(input))
 	for i, v := range input {
@@ -10,7 +13,11 @@ func convertToInt(input []string) []int {
 	return result
 }
 
-func Part1(input []string) int {
+func (t Day1) InputFilename() string {
+	return "day1/input"
+}
+
+func (t Day1) Part1(input []string) int {
 	return Part1int(convertToInt(input))
 }
 
@@ -26,7 +33,7 @@ func Part1int(input []int) int {
 	return incCount
 }
 
-func Part2(input []string) int {
+func (t Day1) Part2(input []string) int {
 	elems := convertToInt(input)
 	slidingWindow := SlidingWindow(elems)
 	return Part1int(slidingWindow)

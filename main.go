@@ -8,6 +8,14 @@ import (
 	"os"
 )
 
+type Day interface {
+	InputFilename() string
+	Part1([]string) int
+	Part2([]string) int
+}
+
+var days = []Day{day1.Day1{}, day3.Day3{}}
+
 func ReadInputFile(filename string) []string {
 	file, err := os.Open(filename)
 	if err != nil {
@@ -24,8 +32,9 @@ func ReadInputFile(filename string) []string {
 }
 
 func main() {
-	input1 := ReadInputFile("day1/input")
-	input3 := ReadInputFile("day3/input")
-	fmt.Println("Day 1:", day1.Part1(input1), day1.Part2(input1))
-	fmt.Println("Day 3:", day3.Part1(input3), day3.Part2(input3))
+	for i, v := range days {
+		dayCount := i + 1
+		input := ReadInputFile(v.InputFilename())
+		fmt.Printf("Day %d: %d %d\n", dayCount, v.Part1(input), v.Part2(input))
+	}
 }
