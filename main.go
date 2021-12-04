@@ -3,6 +3,7 @@ package main
 import (
 	"advent/day1"
 	"advent/day3"
+	"advent/day4"
 	"bufio"
 	"fmt"
 	"os"
@@ -14,7 +15,7 @@ type Day interface {
 	Part2([]string) int
 }
 
-var days = []Day{day1.Day1{}, day3.Day3{}}
+var days = []Day{day1.Day1{}, day3.Day3{}, day4.Day4{}}
 
 func ReadInputFile(filename string) []string {
 	file, err := os.Open(filename)
@@ -32,9 +33,8 @@ func ReadInputFile(filename string) []string {
 }
 
 func main() {
-	for i, v := range days {
-		dayCount := i + 1
+	for _, v := range days {
 		input := ReadInputFile(v.InputFilename())
-		fmt.Printf("Day %d: %d %d\n", dayCount, v.Part1(input), v.Part2(input))
+		fmt.Printf("%3s: %d %d\n", v.InputFilename(), v.Part1(input), v.Part2(input))
 	}
 }

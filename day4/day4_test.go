@@ -5,7 +5,46 @@ import (
 	"testing"
 )
 
-const test_input = `7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1
+var day = Day4{}
+
+func TestDay4Part1(t *testing.T) {
+	if result := day.Part1(testInput); result != 4512 {
+		t.Errorf("Result was not 4512 but %d.", result)
+	}
+}
+
+func TestParseField(t *testing.T) {
+	field := ParseField(testInput[2:8])
+	expectedFirstRow := []int{22, 13, 17, 11, 0}
+	if len(field.numbers) != 5 {
+		t.Error("Field should contain 5 rows but contained", len(field.numbers), field.numbers)
+	}
+	if len(expectedFirstRow) != len(field.numbers[0]) {
+		t.Error("First row should contain 5 columns but contained", len(field.numbers[0]), field.numbers)
+	}
+	for i, v := range expectedFirstRow {
+		if field.numbers[0][i] != v {
+			t.Error("First field should be", expectedFirstRow, "but is", field.numbers[0], field.numbers)
+		}
+	}
+}
+
+func TestCalculateScore(t *testing.T) {
+	field := Field{
+		numbers: [][]int{
+			{14, 21, 17, 24, 4},
+			{10, 16, 15, 9, 19},
+			{18, 8, 23, 26, 20},
+			{22, 11, 13, 6, 5},
+			{2, 0, 12, 3, 7}},
+		marked: map[int]interface{}{7: true, 4: true, 9: true, 5: true, 11: true, 17: true, 23: true, 2: true, 0: true, 14: true, 21: true, 24: true},
+	}
+	if score := CalculateScore(field, 24); score != 4512 {
+		t.Error("Score should be 4512 but was", score)
+	}
+}
+
+const rawTestInput = `7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1
 
 22 13 17 11  0
  8  2 23  4 24
@@ -27,6 +66,4 @@ const test_input = `7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8
 
 `
 
-func TestDay4Part1(t *testing.T) {
-	day4.Part1(strings.Split(test_input, "\n"))
-}
+var testInput = strings.Split(rawTestInput, "\n")
