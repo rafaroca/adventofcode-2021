@@ -13,6 +13,12 @@ func TestDay4Part1(t *testing.T) {
 	}
 }
 
+func TestDay4Part2(t *testing.T) {
+	if result := day.Part2(testInput); result != 1924 {
+		t.Errorf("Result was not 1924 but %d.", result)
+	}
+}
+
 func TestParseField(t *testing.T) {
 	field := ParseField(testInput[2:8])
 	expectedFirstRow := []int{22, 13, 17, 11, 0}
@@ -37,7 +43,7 @@ func TestCalculateScore(t *testing.T) {
 			{18, 8, 23, 26, 20},
 			{22, 11, 13, 6, 5},
 			{2, 0, 12, 3, 7}},
-		marked: map[int]interface{}{7: true, 4: true, 9: true, 5: true, 11: true, 17: true, 23: true, 2: true, 0: true, 14: true, 21: true, 24: true},
+		marked: map[int]struct{}{7: {}, 4: {}, 9: {}, 5: {}, 11: {}, 17: {}, 23: {}, 2: {}, 0: {}, 14: {}, 21: {}, 24: {}},
 	}
 	if score := CalculateScore(field, 24); score != 4512 {
 		t.Error("Score should be 4512 but was", score)
