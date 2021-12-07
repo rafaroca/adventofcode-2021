@@ -1,39 +1,51 @@
 package day6
 
 import (
-	"strconv"
-	"strings"
+	"advent/parser"
 )
 
-const ITERATIONS = 80
+type Day6 struct{}
 
-func Part1(input []string) int {
-	return 0
+func (t Day6) Part1(input []string) int {
+	return FishSum(input, 80)
 }
 
-func ReadInputFish(input []string) []uint8 {
-	rawFish := strings.Split(input[0], ",")
-	fish := make([]uint8, len(rawFish))
-	for i, rawSingleFish := range rawFish {
-		convertedFish, _ := strconv.Atoi(rawSingleFish)
-		fish[i] = uint8(convertedFish)
-	}
-	return fish
+func (t Day6) Part2(input []string) int {
+	return FishSum(input, 256)
 }
 
-func Iter(input []uint8) []uint8 {
-	result := input
-	newborns := 0
-	for _, v := range input {
-		v--
-		if v == 0 {
-			v = 6
-			newborns++
-		}
-		result = append(result, v-1)
+func FishSum(input []string, iterationCount int) int {
+	fishState := ParseSeed(input[0])
+
+	for i := 1; i <= iterationCount; i++ {
+		ShiftFishState(&fishState)
 	}
-	for i := 0; i < newborns; i++ {
-		result = append(result, 8)
+
+	sum := 0
+	for _, v := range fishState {
+		sum += v
 	}
-	return result
+	return sum
+}
+
+func ShiftFishState(fishState *[]int) {
+	newFish := (*fishState)[0]
+	for i := 0; i < 8; i++ {
+		(*fishState)[i] = (*fishState)[i+1]
+	}
+	(*fishState)[6] += newFish
+	(*fishState)[8] = newFish
+}
+
+func ParseSeed(s string) []int {
+	seeds := make([]int, 9)
+	inputs := parser.ParseCommaSeparatedLine(s)
+	for _, v := range inputs {
+		seeds[v]++
+	}
+	return seeds
+}
+
+func (t Day6) InputFilename() string {
+	return "day6/input"
 }

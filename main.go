@@ -4,9 +4,10 @@ import (
 	"advent/day1"
 	"advent/day3"
 	"advent/day4"
-	"bufio"
+	"advent/day6"
+	"advent/parser"
 	"fmt"
-	"os"
+	"time"
 )
 
 type Day interface {
@@ -15,26 +16,13 @@ type Day interface {
 	Part2([]string) int
 }
 
-var days = []Day{day1.Day1{}, day3.Day3{}, day4.Day4{}}
-
-func ReadInputFile(filename string) []string {
-	file, err := os.Open(filename)
-	if err != nil {
-		fmt.Println(err)
-	}
-	defer file.Close()
-
-	var result []string
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		result = append(result, scanner.Text())
-	}
-	return result
-}
+var days = []Day{day1.Day1{}, day3.Day3{}, day4.Day4{}, day6.Day6{}}
 
 func main() {
 	for _, v := range days {
-		input := ReadInputFile(v.InputFilename())
+		input := parser.ReadInputFile(v.InputFilename())
+		start := time.Now()
 		fmt.Printf("%3s: %d %d\n", v.InputFilename(), v.Part1(input), v.Part2(input))
+		fmt.Println("This day took", time.Since(start))
 	}
 }
