@@ -1,9 +1,25 @@
 package day5
 
-import "testing"
+import (
+	"strings"
+	"testing"
+)
+
+var day = Day5{}
 
 func TestLinesPart1(t *testing.T) {
-	// part1 result is 5 points of overlap
+	result := day.Part1(strings.Split(testInput, "\n"))
+	if result != 5 {
+		t.Error("Resulting lines count should be 5 but was", result)
+	}
+}
+
+func TestStraightLines(t *testing.T) {
+	rawLines := ParseLines(strings.Split(testInput, "\n"))
+	lines := FilterStraightLines(rawLines)
+	if len(lines) != 6 {
+		t.Error("Should be 6 straight lines but are", len(lines))
+	}
 }
 
 const testInput = `0,9 -> 5,9
