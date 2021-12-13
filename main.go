@@ -6,6 +6,7 @@ import (
 	"advent/day4"
 	"advent/day5"
 	"advent/day6"
+	"advent/day7"
 	"advent/parser"
 	"fmt"
 	"time"
@@ -17,7 +18,7 @@ type Day interface {
 	Part2([]string) int
 }
 
-var days = []Day{day1.Day1{}, day3.Day3{}, day4.Day4{}, day5.Day5{}, day6.Day6{}}
+var days = []Day{day1.Day1{}, day3.Day3{}, day4.Day4{}, day5.Day5{}, day6.Day6{}, day7.Day7{}}
 
 func main() {
 	for _, v := range days {
