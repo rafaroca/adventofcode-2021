@@ -55,7 +55,50 @@ func CountIntersections(field [][]uint8) int {
 }
 
 func (t Day5) Part2(input []string) int {
-	return 0
+	lines := ParseLines(input)
+	field := make([][]uint8, FIELD_SIZE)
+	for i := range field {
+		field[i] = make([]uint8, FIELD_SIZE)
+	}
+	for _, line := range lines {
+		if line.x1 == line.x2 {
+			yMin := min(line.y1, line.y2)
+			yMax := max(line.y1, line.y2)
+			for i := yMin; i <= yMax; i++ {
+				field[line.x1][i] += 1
+			}
+		} else if line.y1 == line.y2 {
+			xMin := min(line.x1, line.x2)
+			xMax := max(line.x1, line.x2)
+			for i := xMin; i <= xMax; i++ {
+				field[i][line.y1] += 1
+			}
+		} else {
+			var xd int
+			if line.x1 <= line.x2 {
+				xd = 1
+			} else {
+				xd = -1
+			}
+			var yd int
+			if line.y1 <= line.y2 {
+				yd = 1
+			} else {
+				yd = -1
+			}
+			lineLength := line.x2 - line.x1
+			if lineLength < 0 {
+				lineLength = -lineLength
+			}
+			lineLength++
+
+			for i := 0; i < lineLength; i++ {
+				field[line.x1+(xd*i)][line.y1+(yd*i)] += 1
+			}
+		}
+
+	}
+	return CountIntersections(field)
 }
 
 func FilterStraightLines(lines []Line) []Line {

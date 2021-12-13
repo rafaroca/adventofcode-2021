@@ -14,6 +14,13 @@ func TestLinesPart1(t *testing.T) {
 	}
 }
 
+func TestLinesPart2(t *testing.T) {
+	result := day.Part2(strings.Split(testInput, "\n"))
+	if result != 12 {
+		t.Error("Resulting lines count should be 12 but was", result)
+	}
+}
+
 func TestStraightLines(t *testing.T) {
 	rawLines := ParseLines(strings.Split(testInput, "\n"))
 	lines := FilterStraightLines(rawLines)
