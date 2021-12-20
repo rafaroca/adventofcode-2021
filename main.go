@@ -2,6 +2,7 @@ package main
 
 import (
 	"advent/day1"
+	"advent/day15"
 	"advent/day3"
 	"advent/day4"
 	"advent/day5"
@@ -18,7 +19,15 @@ type Day interface {
 	Part2([]string) int
 }
 
-var days = []Day{day1.Day1{}, day3.Day3{}, day4.Day4{}, day5.Day5{}, day6.Day6{}, day7.Day7{}}
+var days = []Day{
+	day1.Day1{},
+	day3.Day3{},
+	day4.Day4{},
+	day5.Day5{},
+	day6.Day6{},
+	day7.Day7{},
+	day15.Day15{},
+}
 
 func main() {
 	for _, v := range days {
