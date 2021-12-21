@@ -1,9 +1,10 @@
 package day15
 
 import (
-	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 var day = Day15{}
@@ -35,6 +36,16 @@ func TestNeighborsEdge(t *testing.T) {
 func TestNeighborsMiddle(t *testing.T) {
 	result := Neighbors(Node{1, 1}, 10)
 	assert.ElementsMatch(t, []Node{{1, 0}, {0, 1}, {2, 1}, {1, 2}}, result)
+}
+
+func TestEnlargeField(t *testing.T) {
+	m := EnlargeField(map[Node]int{{0, 0}: 7}, 1)
+	if len(m) != 25 {
+		t.Error("Enlarged field should have 25 entries but has", len(m))
+	}
+	if result := m[Node{4, 4}]; result != 6 {
+		t.Error("Last field should be 6 but is", result)
+	}
 }
 
 const testInput = `1163751742

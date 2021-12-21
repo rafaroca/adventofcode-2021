@@ -89,6 +89,21 @@ func (t Day15) Part2(input []string) int {
 	return 0
 }
 
+func EnlargeField(input map[Node]int, lineLength int) (enlarged map[Node]int) {
+	enlarged = make(map[Node]int)
+	for i := 0; i < 5; i++ {
+		for j := 0; j < 5; j++ {
+			for y := 0; y < lineLength; y++ {
+				for x := 0; x < lineLength; x++ {
+					incOriginal := input[Node{x, y}] + (i * lineLength) + (lineLength * j)
+					enlarged[Node{x + (lineLength * i), y + (lineLength * j)}] = incOriginal%10 + incOriginal/10
+				}
+			}
+		}
+	}
+	return
+}
+
 func (t Day15) InputFilename() string {
 	return "day15/input"
 }
