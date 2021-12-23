@@ -95,7 +95,7 @@ func EnlargeField(input map[Node]int, lineLength int) (enlarged map[Node]int) {
 		for j := 0; j < 5; j++ {
 			for y := 0; y < lineLength; y++ {
 				for x := 0; x < lineLength; x++ {
-					incOriginal := input[Node{x, y}] + (i * lineLength) + (lineLength * j)
+					incOriginal := input[Node{x, y}] + i + j
 					enlarged[Node{x + (lineLength * i), y + (lineLength * j)}] = incOriginal%10 + incOriginal/10
 				}
 			}
