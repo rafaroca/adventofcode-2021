@@ -18,8 +18,8 @@ func TestPart1(t *testing.T) {
 
 func TestPart2(t *testing.T) {
 	result := day.Part2(strings.Split(testInput, "\n"))
-	if result != 0 {
-		t.Error("Should align on fuel 168 but was", result)
+	if result != 315 {
+		t.Error("Shortest path should be 315 but was", result)
 	}
 }
 

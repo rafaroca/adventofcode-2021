@@ -20,6 +20,10 @@ type OpenListNode struct {
 func (t Day15) Part1(input []string) int {
 	lineLength := len(input[0])
 	lengths := parseLengths(input)
+	return ShortestPathFromTopLeftToBottomRight(lengths, lineLength)
+}
+
+func ShortestPathFromTopLeftToBottomRight(lengths map[Node]int, lineLength int) int {
 	shortestPaths := InitializeShortestPaths(lineLength)
 	queue := []Node{{0, 0}}
 
@@ -86,7 +90,11 @@ func parseLengths(input []string) map[Node]int {
 }
 
 func (t Day15) Part2(input []string) int {
-	return 0
+	lengths := parseLengths(input)
+	originalLineLength := len(input[0])
+	enlargedField := EnlargeField(lengths, originalLineLength)
+	enlargedLineLength := originalLineLength * 5
+	return ShortestPathFromTopLeftToBottomRight(enlargedField, enlargedLineLength)
 }
 
 func EnlargeField(input map[Node]int, lineLength int) (enlarged map[Node]int) {
