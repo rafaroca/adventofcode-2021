@@ -5,9 +5,9 @@ import (
 	"math"
 )
 
-type Day7 struct{}
+type Day struct{}
 
-func (t Day7) Part1(input []string) int {
+func (t Day) Part1(input []string) int {
 	positions := parser.ParseCommaSeparatedLine(input[0])
 	max := calculateMax(positions)
 	fuels := make([]int, max+1)
@@ -19,7 +19,7 @@ func (t Day7) Part1(input []string) int {
 	return calculateMin(fuels)
 }
 
-func (t Day7) Part2(input []string) int {
+func (t Day) Part2(input []string) int {
 	positions := parser.ParseCommaSeparatedLine(input[0])
 	max := calculateMax(positions)
 	fuels := make([]int, max+1)
@@ -36,7 +36,7 @@ func calculateIncreasingFuel(start, end int) int {
 	return diff * (diff + 1) / 2
 }
 
-func (t Day7) InputFilename() string {
+func (t Day) InputFilename() string {
 	return "day7/input"
 }
 

@@ -3,6 +3,7 @@ package main
 import (
 	"advent/day1"
 	"advent/day15"
+	"advent/day2"
 	"advent/day3"
 	"advent/day4"
 	"advent/day5"
@@ -20,13 +21,14 @@ type Day interface {
 }
 
 var days = []Day{
-	day1.Day1{},
-	day3.Day3{},
-	day4.Day4{},
-	day5.Day5{},
-	day6.Day6{},
-	day7.Day7{},
-	day15.Day15{},
+	day1.Day{},
+	day2.Day{},
+	day3.Day{},
+	day4.Day{},
+	day5.Day{},
+	day6.Day{},
+	day7.Day{},
+	day15.Day{},
 }
 
 func main() {

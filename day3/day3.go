@@ -5,14 +5,14 @@ import (
 	"strconv"
 )
 
-type Day3 struct {
+type Day struct {
 }
 
-func (t Day3) InputFilename() string {
+func (t Day) InputFilename() string {
 	return "day3/input"
 }
 
-func (t Day3) Part1(input []string) int {
+func (t Day) Part1(input []string) int {
 	bitCount := len(input[0])
 	fmt.Printf("Running on %d bits.\n", bitCount)
 
@@ -41,7 +41,7 @@ func (t Day3) Part1(input []string) int {
 	return gamma * epsilon
 }
 
-func (t Day3) Part2(input []string) int {
+func (t Day) Part2(input []string) int {
 	bitCount := len(input[0])
 	fmt.Printf("Running on %d bits.\n", bitCount)
 

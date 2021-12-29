@@ -4,13 +4,13 @@ import (
 	"advent/parser"
 )
 
-type Day6 struct{}
+type Day struct{}
 
-func (t Day6) Part1(input []string) int {
+func (t Day) Part1(input []string) int {
 	return FishSum(input, 80)
 }
 
-func (t Day6) Part2(input []string) int {
+func (t Day) Part2(input []string) int {
 	return FishSum(input, 256)
 }
 
@@ -46,6 +46,6 @@ func ParseSeed(s string) []int {
 	return seeds
 }
 
-func (t Day6) InputFilename() string {
+func (t Day) InputFilename() string {
 	return "day6/input"
 }

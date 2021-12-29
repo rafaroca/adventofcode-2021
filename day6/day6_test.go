@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-var day6 = Day6{}
+var day6 = Day{}
 
 func TestFish(t *testing.T) {
 	firstIteration := parser.ParseCommaSeparatedLine(testInput[0])

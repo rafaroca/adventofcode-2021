@@ -4,9 +4,9 @@ import "testing"
 
 var test_input = []string{"00100", "11110", "10110", "10111", "10101", "01111", "00111", "11100", "10000", "11001", "00010", "01010"}
 
-var day = Day3{}
+var day = Day{}
 
-func TestDay3Part1(t *testing.T) {
+func TestDayPart1(t *testing.T) {
 	if result := day.Part1(test_input); result != 198 {
 		t.Errorf("The result should be 198 but was '%d'", result)
 	}
@@ -19,7 +19,7 @@ func TestFilterCandidates(t *testing.T) {
 	}
 }
 
-func TestDay3Part2(t *testing.T) {
+func TestDayPart2(t *testing.T) {
 	if result := day.Part2(test_input); result != 230 {
 		t.Errorf("The result should be 230 but was '%d'", result)
 	}

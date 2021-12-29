@@ -5,15 +5,15 @@ import (
 	"testing"
 )
 
-var day = Day4{}
+var day = Day{}
 
-func TestDay4Part1(t *testing.T) {
+func TestDayPart1(t *testing.T) {
 	if result := day.Part1(testInput); result != 4512 {
 		t.Errorf("Result was not 4512 but %d.", result)
 	}
 }
 
-func TestDay4Part2(t *testing.T) {
+func TestDayPart2(t *testing.T) {
 	if result := day.Part2(testInput); result != 1924 {
 		t.Errorf("Result was not 1924 but %d.", result)
 	}

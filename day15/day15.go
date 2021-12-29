@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-type Day15 struct{}
+type Day struct{}
 
 type Node struct {
 	x, y int
@@ -17,7 +17,7 @@ type OpenListNode struct {
 	f    int
 }
 
-func (t Day15) Part1(input []string) int {
+func (t Day) Part1(input []string) int {
 	lineLength := len(input[0])
 	lengths := parseLengths(input)
 	return ShortestPathFromTopLeftToBottomRight(lengths, lineLength)
@@ -89,7 +89,7 @@ func parseLengths(input []string) map[Node]int {
 	return weights
 }
 
-func (t Day15) Part2(input []string) int {
+func (t Day) Part2(input []string) int {
 	lengths := parseLengths(input)
 	originalLineLength := len(input[0])
 	enlargedField := EnlargeField(lengths, originalLineLength)
@@ -112,6 +112,6 @@ func EnlargeField(input map[Node]int, lineLength int) (enlarged map[Node]int) {
 	return
 }
 
-func (t Day15) InputFilename() string {
+func (t Day) InputFilename() string {
 	return "day15/input"
 }

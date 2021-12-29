@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-var day = Day5{}
+var day = Day{}
 
 func TestLinesPart1(t *testing.T) {
 	result := day.Part1(strings.Split(testInput, "\n"))

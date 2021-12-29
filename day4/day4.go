@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-type Day4 struct{}
+type Day struct{}
 
 type Field struct {
 	numbers [][]int
@@ -20,11 +20,11 @@ type WonField struct {
 	id                 int
 }
 
-func (t Day4) InputFilename() string {
+func (t Day) InputFilename() string {
 	return "day4/input"
 }
 
-func (t Day4) Part1(input []string) int {
+func (t Day) Part1(input []string) int {
 	drawnNumbers := parseDrawnNumbers(input)
 	fields := parseFields(input)
 
@@ -43,7 +43,7 @@ func (t Day4) Part1(input []string) int {
 	return -1
 }
 
-func (t Day4) Part2(input []string) int {
+func (t Day) Part2(input []string) int {
 	drawnNumbers := parseDrawnNumbers(input)
 	fields := parseFields(input)
 

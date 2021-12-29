@@ -2,7 +2,7 @@ package day1
 
 import "strconv"
 
-type Day1 struct {
+type Day struct {
 }
 
 func convertToInt(input []string) []int {
@@ -13,11 +13,11 @@ func convertToInt(input []string) []int {
 	return result
 }
 
-func (t Day1) InputFilename() string {
+func (t Day) InputFilename() string {
 	return "day1/input"
 }
 
-func (t Day1) Part1(input []string) int {
+func (t Day) Part1(input []string) int {
 	return Part1int(convertToInt(input))
 }
 
@@ -33,7 +33,7 @@ func Part1int(input []int) int {
 	return incCount
 }
 
-func (t Day1) Part2(input []string) int {
+func (t Day) Part2(input []string) int {
 	elems := convertToInt(input)
 	slidingWindow := SlidingWindow(elems)
 	return Part1int(slidingWindow)

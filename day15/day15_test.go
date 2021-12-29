@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var day = Day15{}
+var day = Day{}
 
 func TestPart1(t *testing.T) {
 	result := day.Part1(strings.Split(testInput, "\n"))

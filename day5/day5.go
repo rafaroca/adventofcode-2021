@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-type Day5 struct{}
+type Day struct{}
 
 type Line struct {
 	x1 int
@@ -16,7 +16,7 @@ type Line struct {
 
 var FIELD_SIZE = 1000
 
-func (t Day5) Part1(input []string) int {
+func (t Day) Part1(input []string) int {
 	lines := ParseLines(input)
 	straightLines := FilterStraightLines(lines)
 	field := make([][]uint8, FIELD_SIZE)
@@ -54,7 +54,7 @@ func CountIntersections(field [][]uint8) int {
 	return intersections
 }
 
-func (t Day5) Part2(input []string) int {
+func (t Day) Part2(input []string) int {
 	lines := ParseLines(input)
 	field := make([][]uint8, FIELD_SIZE)
 	for i := range field {
@@ -111,7 +111,7 @@ func FilterStraightLines(lines []Line) []Line {
 	return straightLines
 }
 
-func (t Day5) InputFilename() string {
+func (t Day) InputFilename() string {
 	return "day5/input"
 }
 
