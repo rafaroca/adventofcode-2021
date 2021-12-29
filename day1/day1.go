@@ -2,8 +2,7 @@ package day1
 
 import "strconv"
 
-type Day struct {
-}
+type Day struct{}
 
 func convertToInt(input []string) []int {
 	result := make([]int, len(input))
