@@ -9,6 +9,7 @@ import (
 	"advent/day5"
 	"advent/day6"
 	"advent/day7"
+	"advent/day8"
 	"advent/parser"
 	"fmt"
 	"time"
@@ -28,6 +29,7 @@ var days = []Day{
 	day5.Day{},
 	day6.Day{},
 	day7.Day{},
+	day8.Day{},
 	day15.Day{},
 }
 
