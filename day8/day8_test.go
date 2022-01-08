@@ -1,6 +1,7 @@
 package day8
 
 import (
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
@@ -29,6 +30,52 @@ func TestIntersection(t *testing.T) {
 	assert.Equal(t, "", Intersection("", "a"))
 	assert.Equal(t, "", Intersection("a", ""))
 }
+
+func TestExclude(t *testing.T) {
+	assert.Equal(t, "", Exclude("", "a"))
+	assert.Equal(t, "", Exclude("a", "a"))
+	assert.Equal(t, "a", Exclude("a", ""))
+	assert.Equal(t, "c", Exclude("abc", "ab"))
+}
+
+func TestUnion(t *testing.T) {
+	assert.Equal(t, "a", UnionDedupe("a", ""))
+	assert.Equal(t, "a", UnionDedupe("", "aa"))
+	assert.Equal(t, "abcd", UnionDedupe("ab", "acd"))
+}
+
+func TestDisabmiguateCandidates(t *testing.T) {
+	result := []SegMapping{{"a": "c"}, {"a": "d"}}
+	assert.Equal(t, result, DisambiguateCandidates(SegMapping{"a": "cd"}, "a"))
+}
+
+func TestFindValidCandidates(t *testing.T) {
+	var segmap SegMapping = SegMapping{"a": "cf",
+		"b": "cf",
+		"c": "eg",
+		"d": "a",
+		"e": "bd",
+		"f": "bd",
+		"g": "eg"}
+	result := FindValidCandidates([]SegMapping{segmap}, []string{"cdfeb", "fcadb", "cdfeb", "cdbafe"})
+	fmt.Println(result)
+}
+
+const testInputSingle = `acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbafe
+
+`
+
+/*
+cdfeb
+candidates =
+ 0 = a -> cf
+ 1 = b -> cf
+ 2 = c -> eg
+ 3 = d -> a
+ 4 = e -> bd
+ 5 = f -> bd
+ 6 = g -> eg
+*/
 
 const testInput = `be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdgacbe cefdb cefbgd gcbe
 edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec | fcgedb cgb dgebacf gc
